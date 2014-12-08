@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="row component top15" ng-switch-when="match" ng-class="{multiline: component.multiline}">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <textarea class="form-control" ng-model="component.input" ng-if="component.multiline"></textarea>
               <input class="form-control" ng-model="component.input" ng-if="!component.multiline"/>
             </div>
@@ -50,7 +50,7 @@
               <textarea class="form-control" ng-model="component.regexp" ng-if="component.multiline"></textarea>
               <input class="form-control" ng-model="component.regexp" ng-if="!component.multiline"/>
             </div>
-            <div class="col-md-5" ng-show="!component.error">
+            <div class="col-md-4" ng-show="!component.error">
               <p>
                 <span>Результат:</span> <b ng-if="component.result">совпадение</b><b ng-if="!component.result">нет совпадения</b>
               </p>
@@ -58,7 +58,7 @@
                 <span>Вывод:</span> <span ng-bind="component.output | json"></span>
               </p>
             </div>
-            <div class="col-md-2" ng-show="component.error">
+            <div class="col-md-4" ng-show="component.error">
               <p class="error">
                 <b>Ошибка:</b> <span ng-bind="component.error"></span>
               </p>
