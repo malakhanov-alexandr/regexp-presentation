@@ -24,7 +24,7 @@
           <h1 ng-bind="exemple.title"></h1>
         </div>
         <div class="col-md-2 prev-link-container">
-          <a ng-show="prevExemple" ng-href="#{{prevExempleName}}" ng-bind=""&laquo; " + prevExemple.title" class="nav-link"></a>
+          <a ng-show="prevExemple" ng-href="#{{prevExempleName}}" ng-bind="'&laquo; ' + prevExemple.title" class="nav-link"></a>
         </div>
         <div class="col-md-2">
           <a ng-show="nextExemple" ng-href="#{{nextExempleName}}" ng-bind="nextExemple.title + ' &raquo;'" class="nav-link"></a>

@@ -1,8 +1,8 @@
 
 angular.module("regexp.exemples", []).constant("Exemples", {
   "/intro": {
-    title: "Ch0",
-    text: "adasdadfadfqawefqaf"
+    title: "Введение",
+    text: "йцу"
   },
   "/exp1": {
     title: "Ch1",
