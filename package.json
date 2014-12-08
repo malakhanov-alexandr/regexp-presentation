@@ -1,0 +1,9 @@
+{
+  "name": "regexp",
+  "private": true,
+  "version": "0.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.3.1"
+  }
+}

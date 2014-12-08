@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html ng-app="regexp">
+  <head>
+    <title>REGEX exemples</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.css"/>
+
+
+    <link rel="stylesheet" href="app.css"/>
+    <script src="app.js"></script>
+    <script src="exemples.js"></script>
+  </head>
+  <body ng-controller="MainCtrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 ng-bind="exemple.title"></h1>
+        </div>
+        <div class="col-md-2 prev-link-container">
+          <a ng-show="prevExemple" ng-href="#{{prevExempleName}}" ng-bind=""&laquo; " + prevExemple.title" class="nav-link"></a>
+        </div>
+        <div class="col-md-2">
+          <a ng-show="nextExemple" ng-href="#{{nextExempleName}}" ng-bind="nextExemple.title + ' &raquo;'" class="nav-link"></a>
+        </div>
+      </div>
+      <div class="row top25" ng-if="exemple.text">
+        <div class="col-md-12">
+          <p ng-bind-html="exemple.text"></p>
+        </div>
+      </div>
+      <div class="row" ng-repeat="component in exemple.components">
+        <hr/>
+        <div class="col-md-12" ng-switch="component.type">
+          <div class="row" ng-if="component.title">
+            <div class="col-md-12">
+              <h4 ng-bind="component.title"></h4>
+            </div>
+          </div>
+          <div class="row component top15" ng-switch-when="match" ng-class="{multiline: component.multiline}">
+            <div class="col-md-2">
+              <textarea class="form-control" ng-model="component.input" ng-if="component.multiline"></textarea>
+              <input class="form-control" ng-model="component.input" ng-if="!component.multiline"/>
+            </div>
+            <div class="col-md-2">
+              <textarea class="form-control" ng-model="component.regexp" ng-if="component.multiline"></textarea>
+              <input class="form-control" ng-model="component.regexp" ng-if="!component.multiline"/>
+            </div>
+            <div class="col-md-6" ng-show="!component.error">
+              <p>
+                <span>Результат:</span> <b ng-if="component.result">matches</b><b ng-if="!component.result">not matches</b>
+              </p>
+              <p class="comments">
+                <span>Вывод:</span> <span ng-bind="component.output | json"></span>
+              </p>
+            </div>
+            <div class="col-md-6" ng-show="component.error">
+              <p class="error">
+                <b>Ошибка:</b> <span ng-bind="component.error"></span>
+              </p>
+            </div>
+            <div class="col-md-2 component-controls">
+              <div class="checkbox"><label><input type="checkbox" ng-model="component.multiline"/> многострочность</label></div>
+              <div class="checkbox" ng-show="component.tests.length"><label><input type="checkbox" ng-model="component.testsVisible"/> тесты</label></div>
+            </div>
+          </div>
+          <div class="row component top15" ng-switch-when="replace" ng-class="{multiline: component.multiline}">
+            <div class='col-md-12'>
+              <div class='row'>
+                <div class="col-md-4">
+                  <textarea class="form-control" ng-model="component.input" ng-if="component.multiline"></textarea>
+                  <input class="form-control" ng-model="component.input" ng-if="!component.multiline"/>
+                </div>
+                <div class="col-md-6" ng-show="!component.error">
+                  <p>
+                    <span>Результат:</span> <b ng-bind="component.result | json"></b>
+                  </p>
+                </div>
+                <div class="col-md-6" ng-show="component.error">
+                  <p class="error">
+                    <b>Ошибка:</b> <span ng-bind="component.error"></span>
+                  </p>
+                </div>
+                <div class="col-md-2 component-controls">
+                  <div class="checkbox"><label><input type="checkbox" ng-model="component.multiline"/> многострочность</label></div>
+                  <div class="checkbox" ng-show="component.tests.length"><label><input type="checkbox" ng-model="component.testsVisible"/> тесты</label></div>
+                </div>
+              </div>
+              <div class='row top20'>
+                <div class="col-md-2">
+                  <textarea class="form-control" ng-model="component.regexp" ng-if="component.multiline"></textarea>
+                  <input class="form-control" ng-model="component.regexp" ng-if="!component.multiline"/>
+                </div>
+                <div class="col-md-2">
+                  <textarea class="form-control" ng-model="component.replace" ng-if="component.multiline"></textarea>
+                  <input class="form-control" ng-model="component.replace" ng-if="!component.multiline"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row top15" ng-if="component.testsVisible" ng-repeat="test in component.tests" ng-switch="component.type">
+            <div class="col-md-2">
+              <span class="success" ng-if="test.passed">passed</span>
+              <span class="error" ng-if="!test.passed">failed</span>
+            </div>
+            <div class="col-md-8" ng-switch-when="match">
+              <p class="code">
+                <span class='code-text'>"<span ng-bind="test.input"></span>"</span>.match(<span class='code-regex' ng-bind="component.regexp"></span>) => <span class="code-value" ng-bind="test.result | json"></span> <span class="code-comment">// expected <b ng-if="test.expected">to match</b><b ng-if="!test.expected">not to match</b></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
