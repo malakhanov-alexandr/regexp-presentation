@@ -2,17 +2,13 @@
 angular.module('regexp', [
   'ngRoute',
   'regexp.exemples'
-]).controller("MainCtrl", function ($scope, $sce, $location, Exemples) {
+]).config(function($sceProvider) {
+  $sceProvider.enabled(false);
+}).controller("MainCtrl", function ($scope, $location, $window, Exemples) {
 
   $scope.exempleNames = $.map(Exemples, function (element, i) {
     return i;
   });
-
-  for (var i in Exemples) {
-    if (Exemples[i].text) {
-      Exemples[i].text = $sce.trustAsHtml(Exemples[i].text);
-    }
-  }
 
   var resultWatches = [];
   $scope.$on("$locationChangeSuccess", function () {
@@ -25,9 +21,10 @@ angular.module('regexp', [
       resultWatches[i]();
     }
     resultWatches = [];
-
+    $window.scrollTo(0, 0);
     var exempleIndex = $.inArray(path, $scope.exempleNames);
-    $scope.exemple = Exemples[path];
+    $scope.exempleName = path;
+    $scope.exemple = Exemples[$scope.exempleName];
     $scope.nextExempleName = $scope.exempleNames[exempleIndex + 1];
     $scope.nextExemple = !$scope.nextExempleName ? null : Exemples[$scope.nextExempleName];
     $scope.prevExempleName = $scope.exempleNames[exempleIndex - 1];
