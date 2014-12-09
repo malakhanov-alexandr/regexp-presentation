@@ -1,0 +1,5 @@
+<ul>
+  <li ng-repeat="page in menu" ng-class="{active: page.link === exempleName}">
+    <a ng-href="#{{page.link}}" ng-bind="page.title"></a>
+  </li>
+</ul>

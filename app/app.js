@@ -2,9 +2,13 @@
 angular.module('regexp', [
   'ngRoute',
   'regexp.exemples'
-]).config(function($sceProvider) {
+]).config(function ($sceProvider) {
   $sceProvider.enabled(false);
 }).controller("MainCtrl", function ($scope, $location, $window, Exemples) {
+
+  $scope.menu = $.map(Exemples, function (element, index) {
+    return $.extend({link: index}, element);
+  });
 
   $scope.exempleNames = $.map(Exemples, function (element, i) {
     return i;
@@ -34,46 +38,69 @@ angular.module('regexp', [
       var component = $scope.exemple.components[i];
       (function (component) {
         var update;
-        switch (component.type) {
-          case "match":
-          {
-            update = function () {
-              try {
-                component.output = component.input.match(eval(component.regexp));
-                component.result = !!component.output;
-                if(component.tests) {
-                  for(var j in component.tests) {
-                    var test = component.tests[j];
-                    test.result = test.input.match(eval(component.regexp));
-                    test.passed = !!test.result === test.expected;
-                  }
-                }
-                component.error = false;
-              } catch (ex) {
-                component.error = ex.message;
-              }
-            };
-            break;
-          }
-          case "replace":
-          {
-            update = function () {
-              try {
-                component.result = component.output = component.input.replace(eval(component.regexp), component.replace);
-                component.error = false;
-              } catch (ex) {
-                component.error = ex.message;
-              }
-            };
-            break;
-          }
-        }
+
         resultWatches.push($scope.$watch("exemple.components[" + i + "].regexp", update));
         resultWatches.push($scope.$watch("exemple.components[" + i + "].input", update));
         resultWatches.push($scope.$watch("exemple.components[" + i + "].replace", update));
       })(component);
     }
-
   });
-
+}).directive("fieldRow", function () {
+  return {
+    restrict: "A",
+    transclude: true,
+    templateUrl: function (elem, attrs) {
+      return "partials/" + attrs.fieldRow + "-field-row.html";
+    },
+    scope: {
+//      input: '@',
+//      regexp: '@',
+//      replace: '@',
+      multiline: '@',
+      tests: "="
+    },
+    link: function ($scope, elem, attrs) {
+      $scope.input = elem.attr("data-input"); // because f***ing attrs/isolated_scope trims value like /\s(\S*)\s/
+      $scope.regexp = elem.attr("data-regexp");
+      $scope.replace = elem.attr("data-replace");
+      var updateResult;
+      switch (attrs.fieldRow) {
+        case "match":
+        {
+          updateResult = function () {
+            try {
+              $scope.output = $scope.input.match(eval($scope.regexp));
+              $scope.result = !!$scope.output;
+//          if ($scope.tests) {
+//            for (var j in $scope.tests) {
+//              var test = $scope.tests[j];
+//              test.result = test.input.match(eval($scope.regexp));
+//              test.passed = !!test.result === test.expected;
+//            }
+//          }
+              $scope.error = false;
+            } catch (ex) {
+              $scope.error = ex.message;
+            }
+          };
+          break;
+        }
+        case "replace":
+        {
+          updateResult = function () {
+            try {
+              $scope.result = $scope.output = $scope.input.replace(eval($scope.regexp), $scope.replace);
+              $scope.error = false;
+            } catch (ex) {
+              $scope.error = ex.message;
+            }
+          };
+          break;
+        }
+      }
+      $scope.$watch("input", updateResult);
+      $scope.$watch("regexp", updateResult);
+      $scope.$watch("replace", updateResult);
+    }
+  };
 });

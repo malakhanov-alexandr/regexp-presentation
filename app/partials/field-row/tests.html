@@ -1,0 +1,11 @@
+<div class="row top15" ng-if="component.testsVisible" ng-repeat="test in component.tests" ng-switch="component.type">
+  <div class="col-md-2">
+    <span class="success" ng-if="test.passed">passed</span>
+    <span class="error" ng-if="!test.passed">failed</span>
+  </div>
+  <div class="col-md-8" ng-switch-when="match">
+    <p class="code">
+      <span class='code-text'>"<span ng-bind="test.input"></span>"</span>.match(<span class='code-regex' ng-bind="component.regexp"></span>) => <span class="code-value" ng-bind="test.result | json"></span> <span class="code-comment">// expected <b ng-if="test.expected">to match</b><b ng-if="!test.expected">not to match</b></span>
+    </p>
+  </div>
+</div>

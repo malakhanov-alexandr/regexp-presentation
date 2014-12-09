@@ -1,24 +1,39 @@
-<p>
-  Якоря - специальные символы, которые не присутствуют в тексте и означают позицию в нем.
-</p>
-<br/>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Обозначение</th>
-      <th>Смысл</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td colspan="2">Поддерживаются в Javascript:</td></tr>
-    <tr><td><code>^</code></td><td>Начало строки</td></tr>
-    <tr><td><code>$</code></td><td>Конец строки</td></tr>
-    <tr><td colspan="2">Не поддерживаются в Javascript:</td></tr>
-    <tr><td><code>\A</code></td><td>Начало текста</td></tr>
-    <tr><td><code>\Z</code></td><td>Конец текста</td></tr>
-    <tr><td><code>\b</code></td><td>Граница слова</td></tr>
-    <tr><td><code>\B</code></td><td>Не граница слова</td></tr>
-    <tr><td><code>\&lt;</code></td><td>Начало слова</td></tr>
-    <tr><td><code>\&gt;</code></td><td>Конец слова</td></tr>
-  </tbody>
-</table>
+<div class='row'>
+  <div class="col-md-7">
+    <p>
+      Якоря - специальные символы, которые не присутствуют в тексте и означают позицию в нем.
+    </p>
+    <br/>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Обозначение</th>
+          <th>Смысл</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="2">Поддерживаются в Javascript:</td></tr>
+        <tr><td><code>^</code></td><td>Начало строки</td></tr>
+        <tr><td><code>$</code></td><td>Конец строки</td></tr>
+        <tr><td colspan="2">Не поддерживаются в Javascript:</td></tr>
+        <tr><td><code>\A</code></td><td>Начало текста</td></tr>
+        <tr><td><code>\Z</code></td><td>Конец текста</td></tr>
+        <tr><td><code>\b</code></td><td>Граница слова</td></tr>
+        <tr><td><code>\B</code></td><td>Не граница слова</td></tr>
+        <tr><td><code>\&lt;</code></td><td>Начало слова</td></tr>
+        <tr><td><code>\&gt;</code></td><td>Конец слова</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-5 menu" ng-include="'partials/menu.html'"></div>
+</div>
+<div class='row'>
+  <div class='col-md-12'>
+    <hr/>
+    <div data-field-row="match" data-input="123, 456" data-regexp="/\d+/">Поиск по умолчанию слева направо до первого нахождения, так что:</div>
+    <hr/>
+    <div data-field-row="match" data-input="123, 456" data-regexp="/\d+$/">Но если уточнить, что искомое заканчивается на "конец строки":</div>
+    <hr/>
+    <div data-field-row="match" data-input="123, 456" data-regexp="/^\d+$/">И наконец сопоставление строки целиком</div>
+  </div>
+</div>

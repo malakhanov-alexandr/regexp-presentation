@@ -1,50 +1,64 @@
-<p>
-  Вместо конкретного символа, регулярное выражение может содержать обозначение для «класса символов».<br>
-</p>
-<table class='table table-bordered table-striped'>
-  <thead>
-    <tr>
-      <th>Представление</th>
-      <th>Эквивалент</th>
-      <th>Значение</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>.</code></td>
-      <td><code>[^]</code></td>
-      <td>Любой символ, кроме переноса строки (<code>\n</code>)</td>
-    </tr>
-    <tr>
-      <td><code>\d</code></td>
-      <td><code>[0-9]</code></td>
-      <td>Цифра</td>
-    </tr>
-    <tr>
-      <td><code>\D</code></td>
-      <td><code>[^\d]</code></td>
-      <td>Любой символ, кроме цифры</td>
-    </tr>
-    <tr>
-      <td><code>\w</code></td>
-      <td><code>[A-Za-zА-Яа-я0-9_]</code></td>
-      <td>Символы, образующие «слово» (буквы, цифры и символ подчёркивания)</td>
-    </tr>
-    <tr>
-      <td><code>\W</code></td>
-      <td><code>[^\w]</code></td>
-      <td>Символы, не образующие «слово»</td>
-    </tr>
-    <tr>
-      <td><code>\s</code></td>
-      <td><code>[ \t\v\r\n\f]</code></td>
-      <td>Пробельный символ</td>
-    </tr>
-    <tr>
-      <td><code>\S</code></td>
-      <td><code>[^\s]</code></td>
-      <td>Не пробельный символ</td>
-    </tr>
-  </tbody>
-</table>
-
+<div class='row'>
+  <div class="col-md-7">
+    <p>
+      Вместо конкретного символа, регулярное выражение может содержать обозначение для «класса символов».<br>
+    </p>
+    <table class='table table-bordered table-striped'>
+      <thead>
+        <tr>
+          <th>Представление</th>
+          <th>Эквивалент</th>
+          <th>Значение</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>.</code></td>
+          <td><code>[^]</code></td>
+          <td>Любой символ, кроме переноса строки (<code>\n</code>)</td>
+        </tr>
+        <tr>
+          <td><code>\d</code></td>
+          <td><code>[0-9]</code></td>
+          <td>Цифра</td>
+        </tr>
+        <tr>
+          <td><code>\D</code></td>
+          <td><code>[^\d]</code></td>
+          <td>Любой символ, кроме цифры</td>
+        </tr>
+        <tr>
+          <td><code>\w</code></td>
+          <td><code>[A-Za-zА-Яа-я0-9_]</code></td>
+          <td>Символы, образующие «слово» (буквы, цифры и символ подчёркивания)</td>
+        </tr>
+        <tr>
+          <td><code>\W</code></td>
+          <td><code>[^\w]</code></td>
+          <td>Символы, не образующие «слово»</td>
+        </tr>
+        <tr>
+          <td><code>\s</code></td>
+          <td><code>[ \t\v\r\n\f]</code></td>
+          <td>Пробельный символ</td>
+        </tr>
+        <tr>
+          <td><code>\S</code></td>
+          <td><code>[^\s]</code></td>
+          <td>Не пробельный символ</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-5 menu" ng-include="'partials/menu.html'"></div>
+</div>
+<div class='row'>
+  <div class='col-md-12'>
+    <hr/>
+    <div data-field-row="match" data-input=" " data-regexp="/\s/"></div>
+    <hr/>
+    <div data-field-row="match" data-input="s" data-regexp="/\s/"></div>
+    <hr/>
+    <div data-field-row="match" data-input="3" data-regexp="/\d/"></div>
+  </div>
+</div>

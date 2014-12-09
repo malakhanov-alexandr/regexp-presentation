@@ -26,6 +26,19 @@ textarea {
     height: @componentHeight;
   }
 }
+.menu { 
+  text-align: right;
+  ul {
+    list-style: none;
+    li.active a {
+      color: black;
+      &:hover {
+        cursor: default;
+        text-decoration: none;
+      }
+    }
+  }
+}
 .form-control {
   font-family: monospace;
   border-color: darken(white, 10%);
