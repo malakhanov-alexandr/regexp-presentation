@@ -1,0 +1,15 @@
+/*
+  Задача - заменить серые цвета со значением в каналах 0x80-0x90 на "gray"
+*/
+* {
+  color: #959595;
+  background-color: #008000;
+}
+body > * {
+  background-color: #909090;
+}
+body > div {
+  background-color: #848484;
+  border-color: #888;
+  outline-color: #868687;
+}
