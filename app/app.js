@@ -1,4 +1,3 @@
-
 angular.module('regexp', [
   'ngRoute',
   'regexp.exemples'

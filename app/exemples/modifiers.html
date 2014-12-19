@@ -1,7 +1,8 @@
 <div class='row'>
   <div class="col-md-7">
     <p>
-      Модификаторы используются для настроек поиска и замены регулярным выражением и записываются после закрывающей <code>/</code>: <br/>
+      Модификаторы используются для настроек поиска и замены регулярным выражением и записываются
+      после закрывающей <code>/</code>: <br/>
       <code>/.../модификаторы</code>, где "модификатор" - один или несколько модификаторов.
     </p>
     <p>
@@ -10,15 +11,28 @@
     <br/>
     <table class="table table-bordered table-striped">
       <thead>
-        <tr>
-          <th>Модификатор</th>
-          <th>Значение</th>
-        </tr>
+      <tr>
+        <th>Модификатор</th>
+        <th>Значение</th>
+      </tr>
       </thead>
       <tbody>
-        <tr><td><code>g</code></td><td>Глобальный поиск. По умолчанию поиск и замена производятся до первого найденного. Указание этого модификаторы позволяет искать и заменять N раз.</td></tr>
-        <tr><td><code>i</code></td><td>Регистронезависимый шаблон</td></tr>
-        <tr><td><code>m</code></td><td>Многострочный текст. Якоря <code>^</code> и <code>$</code> будут расцениваться не только как начало и конец строки, но и как переносы (<code>\n</code> или <code>\r\n</code>).</td></tr>
+      <tr>
+        <td><code>g</code></td>
+        <td>Глобальный поиск. По умолчанию поиск и замена производятся до первого найденного.
+          Указание этого модификаторы позволяет искать и заменять N раз.
+        </td>
+      </tr>
+      <tr>
+        <td><code>i</code></td>
+        <td>Регистронезависимый шаблон</td>
+      </tr>
+      <tr>
+        <td><code>m</code></td>
+        <td>Многострочный текст. Якоря <code>^</code> и <code>$</code> будут расцениваться не только
+          как начало и конец строки, но и как переносы (<code>\n</code> или <code>\r\n</code>).
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>
@@ -27,11 +41,14 @@
 <div class='row'>
   <div class='col-md-12'>
     <hr/>
-    <div data-field-row="match" data-input="Hello, world" data-regexp="/([a-zA-Z]+)/g">Глобальный поиск - модификатор <code>g</code></div>
+    <div data-field-row="match" data-input="Hello, world" data-regexp="/([a-zA-Z]+)/g">Глобальный
+      поиск - модификатор <code>g</code></div>
     <hr/>
-    <div data-field-row="match" data-input="Hello, world" data-regexp="/([a-z]+), ([WORLD]+)/i">Поиск без учета регистра - модификатор <code>i</code></div>
+    <div data-field-row="match" data-input="Hello, world" data-regexp="/([a-z]+), ([WORLD]+)/i">
+      Поиск без учета регистра - модификатор <code>i</code></div>
     <hr/>
     <div data-field-row="match" data-input="Hello, world.
-Привет, мир." data-regexp="/^(\w+), (\w+)\.$/m" data-multiline="true">Многострочный поиск - модификатор <code>m</code></div>
+Привет, мир." data-regexp="/^(\w+), (\w+)\.$/m" data-multiline="true">Многострочный поиск -
+      модификатор <code>m</code></div>
   </div>
 </div>

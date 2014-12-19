@@ -1,4 +1,3 @@
-
 angular.module("regexp.exemples", []).constant("Exemples", {
   "/intro": {
     title: "Введение"
@@ -28,7 +27,7 @@ angular.module("regexp.exemples", []).constant("Exemples", {
   "/statements": {
     title: "Утверждения"
   }
-  
+
 //  "/classes1": {
 //    title: "Символьные классы",
 //    components: [

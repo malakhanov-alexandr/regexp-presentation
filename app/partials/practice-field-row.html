@@ -2,7 +2,10 @@
   <div class='col-md-12'>
     <div class='row'>
       <div class="col-md-5">
-        <textarea class="form-control" ng-model="$parent.input" ng-if="multiline" ng-trim="false"></textarea>
+        <textarea class="form-control"
+                  ng-model="$parent.input"
+                  ng-if="multiline"
+                  ng-trim="false"></textarea>
         <input class="form-control" ng-model="$parent.input" ng-if="!multiline" ng-trim="false"/>
       </div>
       <div class="col-md-5" ng-show="!error">
@@ -16,17 +19,26 @@
         </p>
       </div>
       <div class="col-md-2 component-controls">
-        <div class="checkbox"><label><input type="checkbox" ng-model="multiline"/> многострочность</label></div>
-        <div class="checkbox" ng-show="tests.length"><label><input type="checkbox" ng-model="testsVisible"/> тесты</label></div>
+        <div class="checkbox"><label><input type="checkbox" ng-model="multiline"/>
+          многострочность</label></div>
+        <div class="checkbox" ng-show="tests.length"><label><input type="checkbox"
+                                                                   ng-model="testsVisible"/>
+          тесты</label></div>
       </div>
     </div>
     <div class='row top20'>
       <div class="col-md-2">
-        <textarea class="form-control" ng-model="$parent.regexp" ng-if="multiline" ng-trim="false"></textarea>
+        <textarea class="form-control"
+                  ng-model="$parent.regexp"
+                  ng-if="multiline"
+                  ng-trim="false"></textarea>
         <input class="form-control" ng-model="$parent.regexp" ng-if="!multiline" ng-trim="false"/>
       </div>
       <div class="col-md-3">
-        <textarea class="form-control" ng-model="$parent.replace" ng-if="multiline" ng-trim="false"></textarea>
+        <textarea class="form-control"
+                  ng-model="$parent.replace"
+                  ng-if="multiline"
+                  ng-trim="false"></textarea>
         <input class="form-control" ng-model="$parent.replace" ng-if="!multiline" ng-trim="false"/>
       </div>
     </div>
