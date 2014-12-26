@@ -1,4 +1,5 @@
-The 17 standard, colors are: 
+// заменить на ";" все символы (кроме букв) в концах строк
+The 17 standard, colors are:
  aqua,
  black,
  blue,
